@@ -13,12 +13,15 @@ int main(void)
 		Vertex(glm::vec3(-0.5,-0.5,0)),
 		Vertex(glm::vec3(-0.5, 0.5,0)),
 		Vertex(glm::vec3( 0.5,-0.5,0)),
-		Vertex(glm::vec3(-0.5, 0.5,0)),
-		Vertex(glm::vec3(0.5,0.5,0)),
-		Vertex(glm::vec3(0.5,-0.5,0))
+		Vertex(glm::vec3(0.5,0.5,0))
+
 		
 	};
-	Mesh mesh(vertices, sizeof(vertices) / sizeof(vertices[0]));
+	unsigned int indeces[] = {
+		0,1,2,
+		2,3,1
+	};
+	Mesh mesh(vertices,indeces, sizeof(vertices) / sizeof(vertices[0]),sizeof(indeces)/sizeof(indeces[0]));
 	//Display loop
 	while (!display.isClosed())
 	{

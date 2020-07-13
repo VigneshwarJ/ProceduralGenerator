@@ -14,7 +14,7 @@ private:
 class Mesh
 {
 public:
-	Mesh(Vertex* vertices,unsigned int numVertices);
+	Mesh(Vertex* vertices,unsigned int* indeces, unsigned int numVertices, unsigned int numIndeces);
 	virtual ~Mesh();
 	void draw();
 private:
@@ -25,6 +25,7 @@ private:
 		NUM_BUFF
 	};
 	GLuint m_VertexArrayObject;
+	GLuint m_IndexBufferObject;
 	GLuint m_VertexArrayBuffers[NUM_BUFF];
 	unsigned int m_draw_count;
 };
