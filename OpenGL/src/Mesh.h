@@ -1,32 +1,19 @@
 #pragma once
-#include<glm.hpp>
-#include<GL/glew.h>
-class Vertex
-{
-public:
-	Vertex(const glm::vec3& pos)
-	{
-		this->position = pos;
-	}
-private:
-	glm::vec3 position;
-};
+#include "VertexBuffer.h"
+#include "IndexBuffer.h"
+#include "VertexArray.h"
 class Mesh
 {
 public:
 	Mesh(Vertex* vertices,unsigned int* indeces, unsigned int numVertices, unsigned int numIndeces);
-	virtual ~Mesh();
-	void draw();
-private:
-	enum 
-	{
-		POSITION_VB,
 
-		NUM_BUFF
-	};
-	GLuint m_VertexArrayObject;
-	GLuint m_IndexBufferObject;
-	GLuint m_VertexArrayBuffers[NUM_BUFF];
+	unsigned int getDrawCount() const;
+	virtual ~Mesh() ;
+	void bindAll() const;
+private:
+	VertexArray* m_VAO;
+	IndexBuffer* m_IBO;
+	VertexBuffer* m_VBO;
 	unsigned int m_draw_count;
 };
 

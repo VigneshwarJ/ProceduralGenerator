@@ -3,36 +3,29 @@
 Mesh::Mesh(Vertex* vertices,unsigned int* indeces, unsigned int numVertices,unsigned int numIndeces)
 {
 	m_draw_count = numIndeces;
-	glGenVertexArrays(1, &m_VertexArrayObject); 
-	glBindVertexArray(m_VertexArrayObject);
+	m_VAO = new VertexArray();
 	/*
-	Vertex array buffer object
+	Vertex array buffer object 
 	*/
-	glGenBuffers(NUM_BUFF, m_VertexArrayBuffers);
-	glBindBuffer(GL_ARRAY_BUFFER ,m_VertexArrayBuffers[POSITION_VB]);
-	glBufferData(GL_ARRAY_BUFFER, numVertices * sizeof(vertices[0]),vertices,GL_STATIC_DRAW);
-	glGenBuffers(NUM_BUFF, m_VertexArrayBuffers);
+	m_VBO = new VertexBuffer(numVertices, vertices);
 	/*
 	index array buffer object
 	*/
-	glGenBuffers(NUM_BUFF, &m_IndexBufferObject);
-	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,m_IndexBufferObject);
-	glBufferData(GL_ELEMENT_ARRAY_BUFFER, numIndeces * sizeof(indeces[0]), indeces, GL_STATIC_DRAW);
-
-
-	glEnableVertexAttribArray(0);
-	glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, 0, 0);
-	glBindVertexArray(0);
+	m_IBO = new IndexBuffer(numIndeces, indeces);
+	
 }
-void Mesh::draw()
+unsigned int Mesh::getDrawCount() const{
+	return m_draw_count;
+}
+void Mesh::bindAll() const
 {
-	glBindVertexArray(m_VertexArrayObject);
-
-	glDrawElements(GL_TRIANGLES,m_draw_count, GL_UNSIGNED_INT,nullptr);
-
-	glBindVertexArray(0);
+	m_VAO->AddBuffer(0, *m_VBO, 3);
+	m_VAO->bind();
+	m_VBO->BindBuffer();
+	m_IBO->BindBuffer();
 }
+
 Mesh::~Mesh()
 {
-	glDeleteVertexArrays(1, &m_VertexArrayObject);
+	
 }
