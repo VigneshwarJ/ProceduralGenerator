@@ -30,10 +30,27 @@ Shader::~Shader()
 	glDeleteProgram(m_program);
 }
 
-void Shader::bind()
+void Shader::bind() const
 {
 	glUseProgram(m_program);
 }
+void Shader::unbind() const
+{
+	glUseProgram(0);
+}
+
+void Shader::setUniformLocation4f(const std::string& uniformName, glm::vec4 vector)
+{
+	int location = getUniformLocation(uniformName);
+	glUniform4f(location, vector[0], vector[1], vector[2], vector[3]);
+}
+
+void Shader::setUniformLocation1i(const std::string& uniformName, int vector)
+{
+	int location = getUniformLocation(uniformName);
+	glUniform1i(location, vector);
+}
+
 GLuint Shader::createShader(const std::string& text, GLenum shaderType) {
 	GLuint shader;
 	shader = glCreateShader(shaderType);
@@ -92,5 +109,13 @@ void Shader::CheckShaderError(GLuint shader, GLuint flag, bool isProgram, const 
 			glGetShaderInfoLog(shader, sizeof(error), NULL, error);
 
 		std::cerr << errorMessage << ": '" << error << "'" << std::endl;
-	}
+	} 
+}
+
+int Shader::getUniformLocation(const std::string& uniformName)
+{
+	int location = glGetUniformLocation(m_program, uniformName.c_str());
+	if (location == -1)
+		std::cout << "uniform location returned -1" << std::endl;
+	return location;
 }

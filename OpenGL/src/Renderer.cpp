@@ -10,5 +10,6 @@ void Renderer::render(const Mesh& mesh)
 {
 	mesh.bindAll();
 	m_shader->bind();
+	m_shader->setUniformLocation1i("textureSampler", 0);
 	glDrawElements(GL_TRIANGLES, mesh.getDrawCount(), GL_UNSIGNED_INT, nullptr);
 }

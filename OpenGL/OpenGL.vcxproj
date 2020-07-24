@@ -137,8 +137,10 @@
     <ClCompile Include="src\Shader.cpp" />
     <ClCompile Include="src\Display.cpp" />
     <ClCompile Include="src\Source.cpp" />
+    <ClCompile Include="src\Vender\stb_image\stb_image.cpp" />
     <ClCompile Include="src\VertexBuffer.cpp" />
     <ClCompile Include="src\VertexArray.cpp" />
+    <ClCompile Include="src\Texture.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="src\IndexBuffer.h" />
@@ -147,9 +149,11 @@
     <ClInclude Include="src\Shader.h" />
     <ClInclude Include="src\Display.h" />
     <ClInclude Include="src\Source.h" />
+    <ClInclude Include="src\Vender\stb_image\stb_image.h" />
     <ClInclude Include="src\Vertex.h" />
     <ClInclude Include="src\VertexBuffer.h" />
     <ClInclude Include="src\VertexArray.h" />
+    <ClInclude Include="src\Texture.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="res\basic.fs" />

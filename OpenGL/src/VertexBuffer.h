@@ -3,7 +3,7 @@
 class VertexBuffer
 {
 public:
-	VertexBuffer(unsigned int numVertices, Vertex* vertices);
+	VertexBuffer(unsigned int numVertices, float* vertices, unsigned int number);
 	void BindBuffer() const;
 	void UnBindBuffer() const;
 	~VertexBuffer();

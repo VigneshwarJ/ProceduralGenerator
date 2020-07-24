@@ -15,8 +15,8 @@ void VertexArray::unbind() const {
 void VertexArray::AddBuffer(unsigned int AttributeNo,const VertexBuffer& vbo,const int& elementCount)
 {
 	//std::cout << "hello" << std::endl;
-	vbo.BindBuffer();
 	this->bind();
+	vbo.BindBuffer();
 	glEnableVertexAttribArray(AttributeNo);
 	glVertexAttribPointer(AttributeNo, elementCount, GL_FLOAT, GL_FALSE, 0, 0);
 	/*this->unbind();

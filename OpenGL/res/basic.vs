@@ -1,9 +1,11 @@
 #version 330 
-attribute vec3 position;
-out vec3 acolor;
+in vec3 position;
+in vec2 TextureCoords;
+
+out vec2 passTextCoords;
 
 void main()
 {
 gl_Position = vec4(position,1.0f);	
-acolor = position + vec3(0.5,0.5,0.5);
+passTextCoords = TextureCoords;
 }
