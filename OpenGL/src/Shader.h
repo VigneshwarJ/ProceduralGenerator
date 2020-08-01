@@ -9,6 +9,8 @@ public:
 	void setUniformLocation4f(const std::string& uniformName,glm::vec4 vector);
 	void setUniformLocation1i(const std::string& uniformName, int vector);
 
+	void setUniformLocationMat4(const std::string& uniformName, const glm::mat4& MVP);
+
 	virtual ~Shader();
 private:
 	static const unsigned int NO_SHADERS = 2;

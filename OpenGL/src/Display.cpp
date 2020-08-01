@@ -1,5 +1,6 @@
 #include "Display.h"
-Display::Display(int WIDTH, int HEIGHT, const std::string Name )
+Display::Display(int WIDTH, int HEIGHT, const std::string Name ):
+	window(nullptr),m_isClosed(false)
 {
 	/* Initialize the library */
 	if (!glfwInit())

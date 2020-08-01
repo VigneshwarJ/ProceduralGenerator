@@ -50,6 +50,11 @@ void Shader::setUniformLocation1i(const std::string& uniformName, int vector)
 	int location = getUniformLocation(uniformName);
 	glUniform1i(location, vector);
 }
+void Shader::setUniformLocationMat4(const std::string& uniformName, const glm::mat4& MVP)
+{
+	int location = getUniformLocation(uniformName);
+	glUniformMatrix4fv(location,1,GL_FALSE,&MVP[0][0]);
+}
 
 GLuint Shader::createShader(const std::string& text, GLenum shaderType) {
 	GLuint shader;

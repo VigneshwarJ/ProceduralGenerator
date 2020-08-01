@@ -1,6 +1,6 @@
 #include "Mesh.h"
 #include <iostream>
-Mesh::Mesh(Vertex* vertices,unsigned int* indeces, unsigned int numVertices,unsigned int numIndeces,glm::vec2* text_coord,unsigned int num_text)
+Mesh::Mesh(float* vertices,unsigned int* indeces, unsigned int numVertices,unsigned int numIndeces,float* text_coord,unsigned int num_text)
 {
 	m_draw_count = numIndeces;
 	m_VAO = new VertexArray();

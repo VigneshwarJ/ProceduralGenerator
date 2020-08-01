@@ -6,7 +6,7 @@
 class Mesh
 {
 public:
-	Mesh(Vertex* vertices,unsigned int* indeces, unsigned int numVertices, unsigned int numIndeces,glm::vec2* text_coord, unsigned int num_text);
+	Mesh(float* vertices,unsigned int* indeces, unsigned int numVertices, unsigned int numIndeces,float* text_coord, unsigned int num_text);
 	unsigned int getDrawCount() const;
 	virtual ~Mesh() ;
 	void bindAll() const;
