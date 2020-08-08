@@ -2,12 +2,13 @@
 #include "Mesh.h"
 #include "Shader.h"
 #include "Camera.h"
+#include "Entity.h"
 class Renderer
 {
 public:
-	Renderer();
+	Renderer(Camera* camera);
 	void prepare();
-	void render(const Mesh& mesh);
+	void render(const Entity& entity);
 private:
 	Shader* m_shader;
 	Camera* m_camera;

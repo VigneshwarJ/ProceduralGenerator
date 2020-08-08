@@ -7,6 +7,7 @@ public:
 	virtual ~Display();
 	void Update();
 	bool isClosed(); 
+	GLFWwindow* returnwindow();
 	void clear(float r, float g, float b, float a);
 private:
 	GLFWwindow* window;

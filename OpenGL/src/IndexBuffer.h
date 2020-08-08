@@ -3,7 +3,7 @@
 class IndexBuffer
 {
 public:
-	IndexBuffer(unsigned int numIndeces, unsigned int* indeces);
+	IndexBuffer(unsigned int* indeces, unsigned int numIndeces);
 	void BindBuffer();
 	void UnBindBuffer();
 	~IndexBuffer();

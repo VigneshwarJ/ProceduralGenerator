@@ -1,5 +1,6 @@
 #include "IndexBuffer.h"
-IndexBuffer::IndexBuffer(unsigned int numIndeces, unsigned int* indeces) {
+#include <iostream>
+IndexBuffer::IndexBuffer(unsigned int* indeces,unsigned int numIndeces) {
 	glGenBuffers(1, &m_IndexBufferObject);
 	glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, m_IndexBufferObject);
 	glBufferData(GL_ELEMENT_ARRAY_BUFFER, numIndeces * sizeof(indeces[0]), indeces, GL_STATIC_DRAW);

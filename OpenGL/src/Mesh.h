@@ -6,7 +6,9 @@
 class Mesh
 {
 public:
-	Mesh(float* vertices,unsigned int* indeces, unsigned int numVertices, unsigned int numIndeces,float* text_coord, unsigned int num_text);
+	Mesh(float* vertices,unsigned int* indeces, float* text_coord, float* normals, 
+		unsigned int numVertices, unsigned int numIndeces, unsigned int num_text, 
+		unsigned int num_normals, Texture* texture);
 	unsigned int getDrawCount() const;
 	virtual ~Mesh() ;
 	void bindAll() const;
@@ -15,6 +17,7 @@ private:
 	IndexBuffer* m_IBO;
 	VertexBuffer* m_VBO;
 	VertexBuffer* m_TBO;
+	VertexBuffer* m_NBO;
 	Texture* m_texture;
 	unsigned int m_draw_count;
 };

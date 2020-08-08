@@ -1,6 +1,7 @@
 #include "Shader.h"
 #include <fstream>
 #include <iostream>
+
 static std::string LoadShader(const std::string& filename);
 
 Shader::Shader(const std::string& filename) {

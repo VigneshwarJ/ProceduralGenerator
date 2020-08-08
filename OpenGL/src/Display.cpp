@@ -39,6 +39,10 @@ bool Display::isClosed()
 {
 	return m_isClosed;
 }
+GLFWwindow* Display::returnwindow()
+{
+	return window;
+}
 Display::~Display()
 {
 	glfwTerminate();
