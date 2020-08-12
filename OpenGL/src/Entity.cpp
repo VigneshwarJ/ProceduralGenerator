@@ -17,3 +17,18 @@ void Entity::changeRotation(glm::vec3 rotation)
 {
 	return textured_Mesh;
 }
+
+ glm::vec3 Entity::returnPosition() const
+ {
+	 return Position;
+ }
+
+ glm::vec3 Entity::returnRotation() const
+ {
+	 return Rotation;
+ }
+
+ float Entity::returnScale() const
+ {
+	 return Scale;
+ }

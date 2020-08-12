@@ -16,6 +16,10 @@ Camera::Camera(glm::vec3 position ,
 Camera::~Camera()
 {
 }
+void Camera::move()
+{
+
+}
 glm::mat4 Camera::GetViewMatrix()
 {
 	return glm::lookAt(Position, Position + Front, Up);
@@ -33,6 +37,10 @@ void Camera::ProcessKeyboard(Camera_Movement direction, float deltaTime)
 		Position -= Right * velocity;
 	if (direction == RIGHT)
 		Position += Right * velocity;
+	if (direction == UP)
+		Position += Up * velocity;
+	if(direction==DOWN)
+		Position -= Up * velocity;
 }
 
 // processes input received from a mouse input system. Expects the offset value in both the x and y direction.

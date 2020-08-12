@@ -56,6 +56,11 @@ void Shader::setUniformLocationMat4(const std::string& uniformName, const glm::m
 	int location = getUniformLocation(uniformName);
 	glUniformMatrix4fv(location,1,GL_FALSE,&MVP[0][0]);
 }
+void Shader::setUniformLocation3f(const std::string& uniformName, const glm::vec3 vec3)
+{
+	int location = getUniformLocation(uniformName);
+	glUniform3f(location, vec3[0],vec3[1],vec3[2]);
+}
 
 GLuint Shader::createShader(const std::string& text, GLenum shaderType) {
 	GLuint shader;
@@ -120,8 +125,16 @@ void Shader::CheckShaderError(GLuint shader, GLuint flag, bool isProgram, const 
 
 int Shader::getUniformLocation(const std::string& uniformName)
 {
-	int location = glGetUniformLocation(m_program, uniformName.c_str());
+	int location;
+	if (uniformNameCache.find(uniformName) == uniformNameCache.end())
+	{
+		location = glGetUniformLocation(m_program, uniformName.c_str());
+	}
+	else
+	{
+		location = uniformNameCache[uniformName];
+	}
 	if (location == -1)
-		std::cout << "uniform location returned -1" << std::endl;
+		std::cout << "uniform location returned -1" <<uniformName<< std::endl;
 	return location;
 }

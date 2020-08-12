@@ -13,6 +13,9 @@ public:
 	void changePosition(glm::vec3 position);
 	void changeRotation(glm::vec3 rotation);
 	Mesh* returnMesh() const;
+	glm::vec3 returnPosition() const;
+	glm::vec3 returnRotation() const;
+	float returnScale() const;
 
 };
 

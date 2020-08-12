@@ -32,6 +32,8 @@ void Mesh::bindAll() const
 
 	m_VAO->bind();
 	m_VBO->BindBuffer();
+	m_TBO->BindBuffer();
+	m_NBO->BindBuffer();
 	m_IBO->BindBuffer();
 	m_texture->bind();
 }
