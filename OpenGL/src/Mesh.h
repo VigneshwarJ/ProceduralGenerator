@@ -10,8 +10,11 @@ public:
 		unsigned int numVertices, unsigned int numIndeces, unsigned int num_text, 
 		unsigned int num_normals, Texture* texture);
 	unsigned int getDrawCount() const;
+	void bindAttributes() const;
 	virtual ~Mesh() ;
+	Texture* returnTexture() const;
 	void bindAll() const;
+	void unbindAll() const;
 private:
 	VertexArray* m_VAO;
 	IndexBuffer* m_IBO;
@@ -20,5 +23,7 @@ private:
 	VertexBuffer* m_NBO;
 	Texture* m_texture;
 	unsigned int m_draw_count;
+	Mesh(const Mesh& t);
+	Mesh& operator = (const Mesh& t);
 };
 

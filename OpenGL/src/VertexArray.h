@@ -7,7 +7,9 @@ public:
 	VertexArray();
 	void bind() const;
 	void unbind() const;
-	void AddBuffer(unsigned int AttributeNo, const VertexBuffer& vbo, const int& number);
+	void bindAttributes(const unsigned int& AttributeNo, const VertexBuffer& vbos, const int& elementCount);
+	void enableAttributes(const unsigned int& AttributeNo);
+	void disableAttributes(const unsigned int& AttributeNo);
 	~VertexArray();
 private:
 	GLuint m_VertexArrayObject;

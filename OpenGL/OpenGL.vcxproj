@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\EntityRenderer.cpp" />
     <ClCompile Include="src\Light.cpp" />
     <ClCompile Include="src\Entity.cpp" />
     <ClCompile Include="src\Camera.cpp" />
@@ -153,8 +154,11 @@
     <ClCompile Include="src\VertexBuffer.cpp" />
     <ClCompile Include="src\VertexArray.cpp" />
     <ClCompile Include="src\Texture.cpp" />
+    <ClCompile Include="src\Terrain.cpp" />
+    <ClCompile Include="src\TerrainRenderer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\EntityRenderer.h" />
     <ClInclude Include="src\Light.h" />
     <ClInclude Include="src\Entity.h" />
     <ClInclude Include="src\Camera.h" />
@@ -170,10 +174,14 @@
     <ClInclude Include="src\VertexBuffer.h" />
     <ClInclude Include="src\VertexArray.h" />
     <ClInclude Include="src\Texture.h" />
+    <ClInclude Include="src\Terrain.h" />
+    <ClInclude Include="src\TerrainRenderer.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="res\basic.fs" />
     <None Include="res\basic.vs" />
+    <None Include="res\Terrain.fs" />
+    <None Include="res\Terrain.vs" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

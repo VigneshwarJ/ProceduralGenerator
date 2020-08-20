@@ -4,6 +4,7 @@ in vec2 TextureCoords;
 in vec3 normals;
 out vec2 passTextCoords;
 out vec3 toLightVector;
+out vec3 toCameraVector;
 out vec3 surfaceNormal;
 uniform mat4 TransformationMat;
 uniform mat4 ViewMat;
@@ -17,4 +18,5 @@ gl_Position = ProjectionMat * ViewMat * worldPosition;
 passTextCoords = TextureCoords;
 surfaceNormal = (TransformationMat * vec4(normals,0.0f)).xyz;
 toLightVector = lightPosition - worldPosition.xyz;
+toCameraVector = (inverse(ViewMat) * vec4(0.0,0.0,0.0,1.0)).xyz - worldPosition.xyz;
 }

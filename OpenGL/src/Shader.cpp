@@ -45,7 +45,12 @@ void Shader::setUniformLocation4f(const std::string& uniformName, glm::vec4 vect
 	int location = getUniformLocation(uniformName);
 	glUniform4f(location, vector[0], vector[1], vector[2], vector[3]);
 }
-
+void Shader::setUniformLocation1f(const std::string& uniformName, float vector)
+{
+	int location = getUniformLocation(uniformName);
+	glUniform1f(location, vector);
+}
+ 
 void Shader::setUniformLocation1i(const std::string& uniformName, int vector)
 {
 	int location = getUniformLocation(uniformName);
@@ -66,7 +71,7 @@ GLuint Shader::createShader(const std::string& text, GLenum shaderType) {
 	GLuint shader;
 	shader = glCreateShader(shaderType);
 	if (shader == 0)
-		std::cerr << "err in shader creation" << std::endl;
+		std::cerr << "err in shader creation" <<shaderType<< std::endl;
 
 	const GLchar* shaderSourceString[1];
 	GLint shaderSourceStrLen[1];
@@ -129,6 +134,7 @@ int Shader::getUniformLocation(const std::string& uniformName)
 	if (uniformNameCache.find(uniformName) == uniformNameCache.end())
 	{
 		location = glGetUniformLocation(m_program, uniformName.c_str());
+		uniformNameCache.insert({ uniformName,location });
 	}
 	else
 	{

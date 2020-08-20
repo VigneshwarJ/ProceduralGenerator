@@ -68,7 +68,7 @@ Mesh* Loader::loadObject(const std::string& fileName,const std::string& textureN
 			else if (line[0] == 'f' && line[1] == ' ')
 			{
 				if (first) {
-					std::cout << vertices.size() << "  " << normals.size() << " " << textures.size();
+					//std::cout << vertices.size() << "  " << normals.size() << " " << textures.size();
 					normals_final = new glm::vec3[vertices.size()];
 					textures_final = new glm::vec2[vertices.size()];
 					i = 0;

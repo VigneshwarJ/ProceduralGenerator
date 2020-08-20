@@ -1,3 +1,4 @@
+#pragma once
 #include<iostream>
 #include "Display.h"
 #include "Mesh.h"
@@ -19,18 +20,47 @@ float lastY = SCR_HEIGHT / 2.0f;
 bool firstMouse = true;
 void mouse_callback(GLFWwindow* window, double xpos, double ypos);
 void scroll_callback(GLFWwindow* window, double xoffset, double yoffset );
+int main(void);
 void processInput(GLFWwindow* window);
-Camera* camera = new Camera(glm::vec3(0.0f, 0.0f, 3.0f));
-Light* light = new Light({ {10.0f},{0.0f},{-0.0f} }, { {1.0f},{1.0f},{1.0f} });
+Camera* camera = new Camera(glm::vec3(0.0f, 2.0f, 5.0f), 
+	glm::vec3(0.0f, 1.0f, 0.0f), -90.0f,-20);
+Light* light = new Light({ {1000.0f},{1000.0f},{-3000.0f} }, { {1.0f},{1.0f},{1.0f} });
+
 int main(void)
 {	
 
 	Display display(SCR_WIDTH, SCR_HEIGHT, "Procedural terrain");
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	glEnable(GL_BLEND);
-	Renderer renderer(camera,light);
+	Renderer renderer;
 	Mesh* mesh = Loader::loadObject("res/tree", "res/tree.png");
+	//Mesh* mesh2 = Loader::loadObject("res/batwing", "res/tree.png");
+	Mesh* mesh3 = Loader::loadObject("res/cube", "res/tree.png");
+	Mesh* mesh4 = Loader::loadObject("res/cube", "res/tree.png");
+	Mesh* mesh5 = Loader::loadObject("res/cube", "res/tree.png");
+	Mesh* mesh6 = Loader::loadObject("res/cube", "res/tree.png");
+	Mesh* mesh7 = Loader::loadObject("res/cube", "res/tree.png");
+	Mesh* mesh8 = Loader::loadObject("res/cube", "res/tree.png");
+	
 	Entity* entity = new Entity(mesh, { {0.0f}, {0.0f} ,{0.0f} }, { {0.0f}, {0.0f} ,{0.0f} }, 0.5f);
+	Entity* entity2 = new Entity(mesh4, { {1.0f}, {0.0f} ,{0.0f} }, { {90.0f}, {0.0f} ,{90.0f} }, 0.005f);
+	Entity* entity3 = new Entity(mesh3, { {-1.0f}, {0.0f} ,{0.0f} }, { {0.0f}, {0.0f} ,{0.0f} }, 0.5f);
+	Entity* entity4 = new Entity(mesh5, { {1.0f}, {0.0f} ,{0.0f} }, { {90.0f}, {0.0f} ,{90.0f} }, 0.005f);
+	Entity* entity5 = new Entity(mesh6, { {1.5f}, {0.0f} ,{0.0f} }, { {0.0f}, {0.0f} ,{0.0f} }, 0.25f);
+	Entity* entity6 = new Entity(mesh7, { {1.0f}, {0.0f} ,{0.0f} }, { {90.0f}, {0.0f} ,{90.0f} }, 0.005f);
+	Entity* entity7 = new Entity(mesh8, { {-1.5f}, {0.0f} ,{0.0f} }, { {0.0f}, {0.0f} ,{0.0f} }, 0.25f);
+
+	Terrain* terrain = new Terrain(0,-1, new Texture("res/grass.png"));
+	Terrain* terrain2 = new Terrain(-1, -1, new Texture("res/grass.png"));
+	renderer.processEntities(entity);
+	renderer.processEntities(entity2);
+	renderer.processEntities(entity3);
+	renderer.processEntities(entity4);
+	renderer.processEntities(entity5);
+	renderer.processEntities(entity6);
+	renderer.processEntities(entity7);
+	renderer.processTerrains(terrain);
+	renderer.processTerrains(terrain2);
 	/*glfwSetCursorPosCallback(display.returnwindow(), mouse_callback);
 	glfwSetScrollCallback(display.returnwindow(), scroll_callback);*/
 	//Display loop
@@ -45,7 +75,7 @@ int main(void)
 		entity->changeRotation({ {0.0f},{0.001f},{0.0f} });
 		//Display loop
 		display.clear(0.12f, 0.21f, 0.15f, 1.0f);
-		renderer.render(*entity);
+		renderer.render(light, camera);
 		display.Update();
 	}
 	return 0;
