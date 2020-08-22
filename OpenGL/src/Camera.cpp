@@ -1,9 +1,9 @@
 #include "Camera.h"
+#include <iostream>
 
 Camera::Camera(glm::vec3 position ,
 	glm::vec3 up, float yaw ,
-	float pitch ) : Front(glm::vec3(0.0f, 0.0f, -1.0f)),
-	MovementSpeed(SPEED), MouseSensitivity(SENSITIVITY), Zoom(ZOOM)
+	float pitch )
 {
 	Position = position;
 	WorldUp = up;
@@ -22,7 +22,10 @@ void Camera::move()
 }
 glm::mat4 Camera::GetViewMatrix()
 {
-	return glm::lookAt(Position, Position + Front, Up);
+	glm::mat4 Camera = glm::rotate(glm::mat4(1.0f), glm::radians(Pitch), glm::vec3(1, 0, 0));
+	Camera = glm::rotate(Camera, glm::radians(Yaw), glm::vec3(0, 1, 0));
+	Camera = glm::translate(Camera, Position);
+	return Camera;
 }
 
 // processes input received from any keyboard-like input system. Accepts input parameter in the form of camera defined ENUM (to abstract it from windowing systems)
@@ -30,17 +33,25 @@ void Camera::ProcessKeyboard(Camera_Movement direction, float deltaTime)
 {
 	float velocity = MovementSpeed * deltaTime;
 	if (direction == FORWARD)
-		Position += Front * velocity;
+		Position[2] += 0.1 ;
 	if (direction == BACKWARD)
-		Position -= Front * velocity;
+		Position[2] -= 0.1 ;
 	if (direction == LEFT)
-		Position -= Right * velocity;
+		Position[0] += 0.1;
 	if (direction == RIGHT)
-		Position += Right * velocity;
+		Position[0] -= 0.1;
 	if (direction == UP)
-		Position += Up * velocity;
+		Position[1] += 0.1;
 	if(direction==DOWN)
-		Position -= Up * velocity;
+		Position[1] -= 0.1;
+	if (direction == RUP)
+		Pitch += PITCH;
+	if (direction == RDOWN)
+		Pitch -= PITCH ;
+	if (direction == RLEFT)
+		Yaw += YAW;
+	if (direction == RRIGHT)
+		Yaw -= YAW ;
 }
 
 // processes input received from a mouse input system. Expects the offset value in both the x and y direction.
@@ -73,6 +84,11 @@ void Camera::ProcessMouseScroll(float yoffset)
 		Zoom = 1.0f;
 	if (Zoom > 45.0f)
 		Zoom = 45.0f;
+}
+
+void Camera::printLocation()
+{
+	std::cout << Position[0] << "  " << Position[1] << "  " << Position[2] << std::endl;
 }
 
 // calculates the front vector from the Camera's (updated) Euler Angles

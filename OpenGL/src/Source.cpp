@@ -22,45 +22,34 @@ void mouse_callback(GLFWwindow* window, double xpos, double ypos);
 void scroll_callback(GLFWwindow* window, double xoffset, double yoffset );
 int main(void);
 void processInput(GLFWwindow* window);
-Camera* camera = new Camera(glm::vec3(0.0f, 2.0f, 5.0f), 
-	glm::vec3(0.0f, 1.0f, 0.0f), -90.0f,-20);
-Light* light = new Light({ {1000.0f},{1000.0f},{-3000.0f} }, { {1.0f},{1.0f},{1.0f} });
+Camera* camera = new Camera(glm::vec3(-12.0f, -70.0f, -790.0f), 
+	glm::vec3(0.0f, 1.0f, 0.0f), 90.0f,20.0f);
+Light* light = new Light({ {2000.0f},{2000.0f},{100.0f} }, { {1.0f},{1.0f},{1.0f} });
+std::vector<Entity*> entities;
+std::vector<Light*> lightw;
+std::vector<Terrain*> terrains;
 
 int main(void)
 {	
-
+	srand(1000000);
 	Display display(SCR_WIDTH, SCR_HEIGHT, "Procedural terrain");
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	glEnable(GL_BLEND);
 	Renderer renderer;
 	Mesh* mesh = Loader::loadObject("res/tree", "res/tree.png");
-	//Mesh* mesh2 = Loader::loadObject("res/batwing", "res/tree.png");
-	Mesh* mesh3 = Loader::loadObject("res/cube", "res/tree.png");
-	Mesh* mesh4 = Loader::loadObject("res/cube", "res/tree.png");
-	Mesh* mesh5 = Loader::loadObject("res/cube", "res/tree.png");
-	Mesh* mesh6 = Loader::loadObject("res/cube", "res/tree.png");
-	Mesh* mesh7 = Loader::loadObject("res/cube", "res/tree.png");
-	Mesh* mesh8 = Loader::loadObject("res/cube", "res/tree.png");
 	
-	Entity* entity = new Entity(mesh, { {0.0f}, {0.0f} ,{0.0f} }, { {0.0f}, {0.0f} ,{0.0f} }, 0.5f);
-	Entity* entity2 = new Entity(mesh4, { {1.0f}, {0.0f} ,{0.0f} }, { {90.0f}, {0.0f} ,{90.0f} }, 0.005f);
-	Entity* entity3 = new Entity(mesh3, { {-1.0f}, {0.0f} ,{0.0f} }, { {0.0f}, {0.0f} ,{0.0f} }, 0.5f);
-	Entity* entity4 = new Entity(mesh5, { {1.0f}, {0.0f} ,{0.0f} }, { {90.0f}, {0.0f} ,{90.0f} }, 0.005f);
-	Entity* entity5 = new Entity(mesh6, { {1.5f}, {0.0f} ,{0.0f} }, { {0.0f}, {0.0f} ,{0.0f} }, 0.25f);
-	Entity* entity6 = new Entity(mesh7, { {1.0f}, {0.0f} ,{0.0f} }, { {90.0f}, {0.0f} ,{90.0f} }, 0.005f);
-	Entity* entity7 = new Entity(mesh8, { {-1.5f}, {0.0f} ,{0.0f} }, { {0.0f}, {0.0f} ,{0.0f} }, 0.25f);
+	Entity* entity = new Entity(mesh, { {0.0f}, {0.0f} ,{0.0f} }, { {0.0f}, {0.0f} ,{0.0f} }, 1.0f);
 
-	Terrain* terrain = new Terrain(0,-1, new Texture("res/grass.png"));
-	Terrain* terrain2 = new Terrain(-1, -1, new Texture("res/grass.png"));
-	renderer.processEntities(entity);
-	renderer.processEntities(entity2);
-	renderer.processEntities(entity3);
-	renderer.processEntities(entity4);
-	renderer.processEntities(entity5);
-	renderer.processEntities(entity6);
-	renderer.processEntities(entity7);
+
+	Terrain* terrain = new Terrain(0,0, new Texture("res/grass2.png"));
+	Terrain* terrain2 = new Terrain(0, 1, new Texture("res/grass2.png"));
+	/*renderer.processEntities(entity);
 	renderer.processTerrains(terrain);
-	renderer.processTerrains(terrain2);
+	renderer.processTerrains(terrain2);*/
+	terrains.push_back(terrain);
+	terrains.push_back(terrain2);
+	entities.push_back(entity);
+	renderer.renderScene(entities, light, terrains, camera);
 	/*glfwSetCursorPosCallback(display.returnwindow(), mouse_callback);
 	glfwSetScrollCallback(display.returnwindow(), scroll_callback);*/
 	//Display loop
@@ -71,12 +60,15 @@ int main(void)
 		deltaTime = currentFrame - lastFrame;
 		lastFrame = currentFrame;
 		// input
-		processInput(display.returnwindow());
-		entity->changeRotation({ {0.0f},{0.001f},{0.0f} });
-		//Display loop
-		display.clear(0.12f, 0.21f, 0.15f, 1.0f);
-		renderer.render(light, camera);
-		display.Update();
+		//renderer.renderScene(entities, light, terrains, camera);
+			processInput(display.returnwindow());
+			entity->changeRotation({ {0.0f},{0.001f},{0.0f} });
+			//Display loop
+			display.clear(0.12f, 0.21f, 0.15f, 1.0f);
+			renderer.render(light, camera);
+			display.Update();
+
+		
 	}
 	return 0;
 }
@@ -102,6 +94,16 @@ void processInput(GLFWwindow* window)
 		camera->ProcessKeyboard(UP, deltaTime);
 	if (glfwGetKey(window, GLFW_KEY_LEFT_CONTROL) == GLFW_PRESS)
 		camera->ProcessKeyboard(DOWN, deltaTime);
+	if (glfwGetKey(window, GLFW_KEY_LEFT) == GLFW_PRESS)
+		camera->ProcessKeyboard(RLEFT, deltaTime);
+	if (glfwGetKey(window, GLFW_KEY_RIGHT) == GLFW_PRESS)
+		camera->ProcessKeyboard(RRIGHT, deltaTime);
+	if (glfwGetKey(window, GLFW_KEY_UP) == GLFW_PRESS)
+		camera->ProcessKeyboard(RUP, deltaTime);
+	if (glfwGetKey(window, GLFW_KEY_DOWN) == GLFW_PRESS)
+		camera->ProcessKeyboard(RDOWN, deltaTime);
+	if (glfwGetKey(window, GLFW_KEY_P) == GLFW_PRESS)
+		camera->printLocation();
 }
 
 // glfw: whenever the window size changed (by OS or user resize) this callback function executes

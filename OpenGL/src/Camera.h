@@ -9,10 +9,14 @@ enum Camera_Movement {
     LEFT,
     RIGHT,
     UP,
-    DOWN
+    DOWN,
+    RLEFT,
+    RRIGHT,
+    RUP,
+    RDOWN
 };
-const float YAW = -90.0f;
-const float PITCH = 0.0f;
+const float YAW = .20f;
+const float PITCH = .20f;
 const float SPEED = 25.5f;
 const float SENSITIVITY = 0.1f;
 const float ZOOM = 90.0f;
@@ -28,6 +32,7 @@ public:
     void ProcessKeyboard(Camera_Movement direction, float deltaTime);
     void ProcessMouseMovement(float xoffset, float yoffset, GLboolean constrainPitch = true);
     void ProcessMouseScroll(float yoffset);
+    void printLocation();
 
 private:
     // camera Attributes
@@ -39,6 +44,7 @@ private:
     // euler Angles
     float Yaw;
     float Pitch;
+    float roll;
     // camera options
     float MovementSpeed;
     float MouseSensitivity;

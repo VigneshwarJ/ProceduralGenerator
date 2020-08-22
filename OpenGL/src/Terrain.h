@@ -1,5 +1,6 @@
 #pragma once
 #include "Mesh.h"
+#include "HeightGenerator.h"
 class Terrain
 {
 private:
@@ -8,6 +9,8 @@ private:
 	void proceduralTerrain(Texture* texture);
 	float x;
 	float z;
+	float GX;
+	float GY;
 	Mesh* mesh;
 
 public:
@@ -16,6 +19,12 @@ public:
 	Mesh* getModel(); 
 	float getX();
 	float getZ();
+	float getHeight(int x, int z);
+	glm::vec3 getNormals(int x, int z);
+	Texture* ground;
+	Texture* grass;
+	Texture* grass2;
+
 
 
 };

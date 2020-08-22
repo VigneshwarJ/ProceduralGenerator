@@ -139,6 +139,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="src\HeightGenerator.cpp" />
     <ClCompile Include="src\EntityRenderer.cpp" />
     <ClCompile Include="src\Light.cpp" />
     <ClCompile Include="src\Entity.cpp" />
@@ -158,6 +159,7 @@
     <ClCompile Include="src\TerrainRenderer.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="src\HeightGenerator.h" />
     <ClInclude Include="src\EntityRenderer.h" />
     <ClInclude Include="src\Light.h" />
     <ClInclude Include="src\Entity.h" />

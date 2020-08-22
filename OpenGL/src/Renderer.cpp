@@ -8,6 +8,7 @@ Renderer::Renderer() {
 	renderer = new EntityRenderer(m_shader, projection);
 	Trenderer = new TerrainRenderer(t_shader, projection);
 	glClearColor(0.12f, 0.21f, 0.15f, 1.0f);
+	std::cout << RAND_MAX;
 }
 void Renderer::prepare() {
 	glClearColor(0.12f, 0.21f, 0.15f, 1.0f);
@@ -31,6 +32,20 @@ void Renderer::render(Light* light, Camera* camera)
 	t_shader->unbind();
 
 	
+}
+
+void Renderer::renderScene(std::vector<Entity*>& entities, Light* lights, std::vector<Terrain*>& terrains, Camera* camera)
+{
+	for (auto& entity : entities)
+	{
+		processEntities(entity);
+	}
+	for (auto terrain : terrains)
+	{
+		processTerrains(terrain);
+	}
+	//Light* light = lights[0];
+	this->render(lights, camera);
 }
 
 void Renderer::processEntities( Entity* entity)

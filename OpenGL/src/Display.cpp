@@ -39,6 +39,10 @@ bool Display::isClosed()
 {
 	return m_isClosed;
 }
+void Display::processInput()
+{
+
+}
 GLFWwindow* Display::returnwindow()
 {
 	return window;
