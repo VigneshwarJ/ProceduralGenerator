@@ -34,7 +34,7 @@ void Renderer::render(Light* light, Camera* camera)
 	
 }
 
-void Renderer::renderScene(std::vector<Entity*>& entities, Light* lights, std::vector<Terrain*>& terrains, Camera* camera)
+void Renderer::renderScene(std::vector<Entity*>const& entities, Light* lights, std::vector<Terrain*>const& terrains, Camera* camera)
 {
 	for (auto& entity : entities)
 	{

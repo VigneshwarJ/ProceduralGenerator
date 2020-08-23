@@ -14,8 +14,8 @@ public:
 	Renderer();
 	void prepare();
 	void render(Light* light, Camera* camera);
-	void renderScene(std::vector<Entity*>& entities, Light* lights,
-		std::vector<Terrain*>& terrains, Camera* camera);
+	void renderScene(std::vector<Entity*>const& entities, Light* lights,
+		std::vector<Terrain*>const& terrains, Camera* camera);
 	void processEntities( Entity* entity);
 	void processTerrains(Terrain* entity);
 private:

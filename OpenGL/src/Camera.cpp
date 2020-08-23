@@ -9,6 +9,7 @@ Camera::Camera(glm::vec3 position ,
 	WorldUp = up;
 	Yaw = yaw;
 	Pitch = pitch;
+	MovementSpeed = 5.0f;
 	updateCameraVectors();
 
 }
@@ -33,25 +34,25 @@ void Camera::ProcessKeyboard(Camera_Movement direction, float deltaTime)
 {
 	float velocity = MovementSpeed * deltaTime;
 	if (direction == FORWARD)
-		Position[2] += 0.1 ;
+		Position[2] +=velocity ;
 	if (direction == BACKWARD)
-		Position[2] -= 0.1 ;
+		Position[2] -= velocity;
 	if (direction == LEFT)
-		Position[0] += 0.1;
+		Position[0] += velocity;
 	if (direction == RIGHT)
-		Position[0] -= 0.1;
+		Position[0] -= velocity;
 	if (direction == UP)
-		Position[1] += 0.1;
+		Position[1] += velocity;
 	if(direction==DOWN)
 		Position[1] -= 0.1;
 	if (direction == RUP)
-		Pitch += PITCH;
+		Pitch += PITCH * deltaTime;
 	if (direction == RDOWN)
-		Pitch -= PITCH ;
+		Pitch -= PITCH * deltaTime;
 	if (direction == RLEFT)
-		Yaw += YAW;
+		Yaw -= YAW * deltaTime;
 	if (direction == RRIGHT)
-		Yaw -= YAW ;
+		Yaw += YAW * deltaTime;
 }
 
 // processes input received from a mouse input system. Expects the offset value in both the x and y direction.

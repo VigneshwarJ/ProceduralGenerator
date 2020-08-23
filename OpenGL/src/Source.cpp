@@ -7,10 +7,11 @@
 #include "Loader.h"
 #include "gtc/matrix_transform.hpp"
 #include "Light.h"
+#include "Ltrees.h"
 
 // settings
-const unsigned int SCR_WIDTH = 800;
-const unsigned int SCR_HEIGHT = 600;
+const unsigned int SCR_WIDTH = 1200;
+const unsigned int SCR_HEIGHT = 800;
 
 // timing
 float deltaTime = 0.0f;	// time between current frame and last frame
@@ -22,9 +23,12 @@ void mouse_callback(GLFWwindow* window, double xpos, double ypos);
 void scroll_callback(GLFWwindow* window, double xoffset, double yoffset );
 int main(void);
 void processInput(GLFWwindow* window);
-Camera* camera = new Camera(glm::vec3(-12.0f, -70.0f, -790.0f), 
-	glm::vec3(0.0f, 1.0f, 0.0f), 90.0f,20.0f);
+//Camera* camera = new Camera(glm::vec3(-12.0f, -70.0f, -790.0f), 
+	//glm::vec3(0.0f, 1.0f, 0.0f), 90.0f,20.0f);
+Camera* camera = new Camera(glm::vec3(-36.4461, - 2.19055,  4.36589),
+	glm::vec3(0.0f, 1.0f, 0.0f), 170.0f, -8.0f);
 Light* light = new Light({ {2000.0f},{2000.0f},{100.0f} }, { {1.0f},{1.0f},{1.0f} });
+
 std::vector<Entity*> entities;
 std::vector<Light*> lightw;
 std::vector<Terrain*> terrains;
@@ -40,7 +44,9 @@ int main(void)
 	
 	Entity* entity = new Entity(mesh, { {0.0f}, {0.0f} ,{0.0f} }, { {0.0f}, {0.0f} ,{0.0f} }, 1.0f);
 
-
+	Ltrees* ltree = new Ltrees();
+	;
+	//Entity* entity2 = new Entity(ltree->returnMesh(), { {0.0f}, {0.0f} ,{0.0f} }, { {0.0f}, {0.0f} ,{0.0f} }, 1.0f);
 	Terrain* terrain = new Terrain(0,0, new Texture("res/grass2.png"));
 	Terrain* terrain2 = new Terrain(0, 1, new Texture("res/grass2.png"));
 	/*renderer.processEntities(entity);
@@ -49,6 +55,8 @@ int main(void)
 	terrains.push_back(terrain);
 	terrains.push_back(terrain2);
 	entities.push_back(entity);
+	entities = ltree->returnEntity();
+	//entities.push_back(entity2);
 	renderer.renderScene(entities, light, terrains, camera);
 	/*glfwSetCursorPosCallback(display.returnwindow(), mouse_callback);
 	glfwSetScrollCallback(display.returnwindow(), scroll_callback);*/
@@ -64,7 +72,7 @@ int main(void)
 			processInput(display.returnwindow());
 			entity->changeRotation({ {0.0f},{0.001f},{0.0f} });
 			//Display loop
-			display.clear(0.12f, 0.21f, 0.15f, 1.0f);
+			display.clear(0.52f, 0.81f, 0.95f, 1.0f);
 			renderer.render(light, camera);
 			display.Update();
 

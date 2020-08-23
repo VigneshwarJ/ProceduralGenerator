@@ -1,7 +1,7 @@
 #include "HeightGenerator.h"
 #include <stdlib.h>
 #include <iostream>
-float HeightGenerator::AMPLITUDE = 70.0f;
+float HeightGenerator::AMPLITUDE = 100.0f;
 long HeightGenerator::seed = UINT32_MAX-10000;
 
 HeightGenerator::HeightGenerator()
