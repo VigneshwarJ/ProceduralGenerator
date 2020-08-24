@@ -28,9 +28,9 @@ Right now I am developing in my free time amid work schedule. So the development
 
 ### screenshots
 #### Terrain
-![High Terrain]("https://github.com/VigneshwarJ/ProceduralGenerator/tree/master/screenshots/High.gif")
-![different Terrain]("https://github.com/VigneshwarJ/ProceduralGenerator/tree/master/screenshots/low.gif")
+![High Terrain](https://github.com/VigneshwarJ/ProceduralGenerator/tree/master/screenshots/High.gif)
+![different Terrain](https://github.com/VigneshwarJ/ProceduralGenerator/tree/master/screenshots/low.gif)
 #### Trees
-![Trees]("https://github.com/VigneshwarJ/ProceduralGenerator/tree/master/screenshots/tree_0.png")
-![Trees]("https://github.com/VigneshwarJ/ProceduralGenerator/tree/master/screenshots/tree_1.png")
+![Trees](https://github.com/VigneshwarJ/ProceduralGenerator/tree/master/screenshots/tree_0.png)
+![Trees](https://github.com/VigneshwarJ/ProceduralGenerator/tree/master/screenshots/tree_1.png)
 ###End
