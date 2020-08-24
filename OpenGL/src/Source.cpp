@@ -47,8 +47,8 @@ int main(void)
 	Ltrees* ltree = new Ltrees();
 	;
 	//Entity* entity2 = new Entity(ltree->returnMesh(), { {0.0f}, {0.0f} ,{0.0f} }, { {0.0f}, {0.0f} ,{0.0f} }, 1.0f);
-	Terrain* terrain = new Terrain(0,0, new Texture("res/grass2.png"));
-	Terrain* terrain2 = new Terrain(0, 1, new Texture("res/grass2.png"));
+	Terrain* terrain = new Terrain(0,0, new Texture("res/grass.png"));
+	Terrain* terrain2 = new Terrain(0, 1, new Texture("res/grass.png"));
 	/*renderer.processEntities(entity);
 	renderer.processTerrains(terrain);
 	renderer.processTerrains(terrain2);*/

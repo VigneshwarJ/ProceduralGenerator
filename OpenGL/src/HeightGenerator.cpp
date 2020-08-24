@@ -11,7 +11,7 @@ HeightGenerator::HeightGenerator()
 
 float HeightGenerator::generateHeight(int x, int z, int gridx, int gridy)
 {
-	float inter = getInterpolatedNoise((x+ gridx)/4.0, (z + gridy)/4.0) * AMPLITUDE;
+	float inter = getInterpolatedNoise((x+ gridx)/8.0, (z + gridy)/8.0) * AMPLITUDE;
 	float doule = 0.0f;
 	//doule = getInterpolatedNoise((x + gridx) / 4.0f, (z + gridy) / 4.0f) * AMPLITUDE / 3.0f;
 	float foule = 0.0f;

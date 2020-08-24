@@ -181,12 +181,6 @@
     <ClInclude Include="src\Terrain.h" />
     <ClInclude Include="src\TerrainRenderer.h" />
   </ItemGroup>
-  <ItemGroup>
-    <None Include="res\basic.fs" />
-    <None Include="res\basic.vs" />
-    <None Include="res\Terrain.fs" />
-    <None Include="res\Terrain.vs" />
-  </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
   </ImportGroup>

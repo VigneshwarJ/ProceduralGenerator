@@ -6,7 +6,6 @@ out vec2 passTextCoords;
 out vec3 toLightVector;
 out vec3 toCameraVector;
 out vec3 surfaceNormal;
-
 uniform mat4 TransformationMat;
 uniform mat4 ViewMat;
 uniform mat4 ProjectionMat;

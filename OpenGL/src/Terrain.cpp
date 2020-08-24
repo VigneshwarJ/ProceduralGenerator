@@ -11,9 +11,9 @@ Terrain::Terrain(int GridX, int GridZ, Texture* texture) :
 {
 
 	proceduralTerrain(texture);
-	ground = new Texture("res/grass2.png");
+	ground = new Texture("res/ground.png");
 	grass = new Texture("res/grass.png");
-	grass2 = new Texture("res/grass2.png");
+	slope = new Texture("res/rock.png");
 }
 
 Terrain::~Terrain()

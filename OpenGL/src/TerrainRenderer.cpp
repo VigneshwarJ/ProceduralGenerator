@@ -27,9 +27,9 @@ void TerrainRenderer::prepareInstance(Terrain* entity)
 {
 	glm::mat4 Model = glm::translate(glm::mat4(1.0f), {entity->getX(),0.0f,entity->getZ()});
 	m_shader->setUniformLocationMat4("TransformationMat", Model);
-	entity->grass->bind(1);
-	entity->ground->bind(2);
-	entity->grass2->bind(3);
+	entity->ground->bind(1);
+	entity->grass->bind(2);
+	entity->slope->bind(3);
 
 
 }

@@ -91,7 +91,7 @@ Mesh* Loader::loadObject(const std::string& fileName,const std::string& textureN
 		}
 		if (&textureName != nullptr)
 		{
-			texture = new Texture("res/tree.png");
+			texture = new Texture(textureName);
 		}
 		Mesh* mesh = new Mesh(&vertices[0][0], &indeces[0], (float*)textures_final, (float*)normals_final,
 			(unsigned int)vertices.size(), (unsigned int)indeces.size(), 

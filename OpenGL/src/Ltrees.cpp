@@ -4,19 +4,22 @@
 
 Ltrees::Ltrees():
 	pos({ 41.6022, -3.697132 ,+27.5689 }),
-	theta(30),
+	theta(25),
 	index(0),
 	count(0),
 	LOOP(5)
 {
 	rotate = glm::mat4(1.0f);
-	maps.insert({ 'F',"FF+[+F-F-F]-[-F+F+F]" });
+	//maps.insert({ 'F',"FF+[+F-F-F]-[-F+F+F]" });
+	maps.insert({ 'F',"FF" });
+	maps.insert({ 'X',"F+[[X]-X]-F[-FX]+X" });
+
 	create();
 }
 void Ltrees::create()
 {
-	std::string a = "F";
-	for (size_t i = 0; i < 3; i++)
+	std::string a = "X";
+	for (size_t i = 0; i < 5; i++)
 	{
 		applyRules(a);
 	}
@@ -113,25 +116,6 @@ void Ltrees::drawtubes(glm::mat2x2 transform, glm::vec3 position)
 
 void Ltrees::createmesh()
 {
-	//std::cout << thetacount<<" "<<pos.r<<" "<<pos.g<<" "<<pos.b<<std::endl;
-	entities.push_back(new Entity(m, pos, glm::vec3(0, 0, glm::radians(thetacount)), 0.25f));
-	//vertices.push_back(pos + glm::vec3(rotate * glm::vec4(0, 0, 0,1)));
-	//vertices.push_back(pos + glm::vec3(rotate * glm::vec4(0, 1, 0,1)));
-	//vertices.push_back(pos + glm::vec3(rotate * glm::vec4(1, 1, 0,1)));
-	//vertices.push_back(pos + glm::vec3(rotate * glm::vec4(1, 0, 0,1)));
-	pos += glm::vec3(rotate * glm::vec4(0, 1.0, 0,1));
-
-	
-	//std::cout << index << std::endl;
-	//indeces.push_back(index++);//1
-	//indeces.push_back(index++);//2
-	//indeces.push_back(index);//2
-	//indeces.push_back(index-2);//2
-	//indeces.push_back(index);//1
-	//indeces.push_back(++index);//3
-	//index++;
-	//tex.push_back(glm::vec2(-1, 1));
-	//tex.push_back(glm::vec2(1, -1));
-	//tex.push_back(glm::vec2(-1, -1));
-	//tex.push_back(glm::vec2(1, -1));
+	entities.push_back(new Entity(m, pos, glm::vec3(0, 0, glm::radians(thetacount)), 0.125f));
+	pos += glm::vec3(rotate * glm::vec4(0, 0.5, 0,1));
 }

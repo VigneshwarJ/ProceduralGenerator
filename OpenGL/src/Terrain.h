@@ -23,7 +23,7 @@ public:
 	glm::vec3 getNormals(int x, int z);
 	Texture* ground;
 	Texture* grass;
-	Texture* grass2;
+	Texture* slope;
 
 
 

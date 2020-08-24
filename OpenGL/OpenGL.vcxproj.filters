@@ -135,10 +135,4 @@
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
-  <ItemGroup>
-    <None Include="res\basic.fs" />
-    <None Include="res\basic.vs" />
-    <None Include="res\Terrain.fs" />
-    <None Include="res\Terrain.vs" />
-  </ItemGroup>
 </Project>
