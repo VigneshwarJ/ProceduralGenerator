@@ -2,10 +2,6 @@
 
 **Table of Contents**
 
-[TOCM]
-
-[TOC]
-
 This is a hobby project aiming to create a open world using only procedural generation. The scope of this project is to learn more about procedural generation and apply various OpenGL techniques to get a good grip  in both.
 
 Right now I am developing in my free time amid work schedule. So the development is slow.
@@ -32,9 +28,12 @@ Right now I am developing in my free time amid work schedule. So the development
 
 ### screenshots
 #### Terrain
-![High Terrain]("screenshots/High.gif")
-![different Terrain]("screenshots/low.gif")
+
+![](screenshots/High.gif)
+![](screenshots/low.gif)
+
 #### Trees
-![Trees]("screenshots/tree_0.png")
-![Trees]("screenshots/tree_1.png")
-###End
+
+![](screenshots/tree_0.png)
+![](screenshots/tree_1.png)
+
