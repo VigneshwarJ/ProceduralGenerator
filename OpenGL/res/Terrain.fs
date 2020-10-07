@@ -49,5 +49,7 @@ void main()
         //total_color = vec4(0.0,0.0,1.0,1.0);
     }
 	out_color =vec4(diffuse,1.0)* total_color;
+//out_color.rgb = unitNormal;
+//out_color = vec4(diffuse,1.0);
 
 }

@@ -17,7 +17,7 @@ void EntityRenderer::render(std::unordered_map<Mesh*, std::list<Entity*>> entiti
 		mesh->bindAll();
 		Texture* tex = mesh->returnTexture();
 
-		m_shader->setUniformLocation1f("reflectivity", 1.0);
+		m_shader->setUniformLocation1f("reflectivity", 0.0);
 		m_shader->setUniformLocation1f("shineDamper", tex->returnShineDampner());
 
 		std::list<Entity*> batch = entityMap.second;

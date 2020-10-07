@@ -10,10 +10,12 @@ uniform mat4 TransformationMat;
 uniform mat4 ViewMat;
 uniform mat4 ProjectionMat;
 uniform vec3 lightPosition;
+//out vec3 pos;
 
 void main()
 {
 vec4 worldPosition = TransformationMat * vec4(position,1.0f);
+//pos = normalize(normals);
 gl_Position = ProjectionMat * ViewMat * worldPosition;	
 passTextCoords = TextureCoords;
 surfaceNormal = (TransformationMat * vec4(normals,0.0f)).xyz;

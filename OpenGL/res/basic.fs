@@ -8,6 +8,7 @@ uniform sampler2D textureSampler;
 uniform vec3 LightColor;
 uniform float shineDamper;
 uniform float reflectivity;
+//in vec3 pos;
 void main()
 {
 	vec3 unitNormal = normalize(surfaceNormal);
@@ -27,6 +28,7 @@ void main()
     vec3 finalSpecular = dampedFactor*reflectivity*LightColor;
     vec4 textureColor = texture(textureSampler,passTextCoords);
 	out_color =vec4(diffuse,1.0)*textureColor +vec4(finalSpecular,1.0) ;
-    //out_color = vec4(0.0,0.0,0.0,1.0);
+//out_color = vec4(diffuse,1.0);
+//out_color.a = 1.0f;
 
 }

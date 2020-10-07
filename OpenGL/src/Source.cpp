@@ -25,7 +25,7 @@ int main(void);
 void processInput(GLFWwindow* window);
 //Camera* camera = new Camera(glm::vec3(-12.0f, -70.0f, -790.0f), 
 	//glm::vec3(0.0f, 1.0f, 0.0f), 90.0f,20.0f);
-Camera* camera = new Camera(glm::vec3(-36.4461, - 2.19055,  4.36589),
+Camera* camera = new Camera(glm::vec3(-49.0909, - 4.43539, - 18.3684),
 	glm::vec3(0.0f, 1.0f, 0.0f), 170.0f, -8.0f);
 Light* light = new Light({ {2000.0f},{2000.0f},{100.0f} }, { {1.0f},{1.0f},{1.0f} });
 
@@ -40,9 +40,10 @@ int main(void)
 	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
 	glEnable(GL_BLEND);
 	Renderer renderer;
-	Mesh* mesh = Loader::loadObject("res/tree", "res/tree.png");
+	//Mesh* mesh22 = Loader::loadObject("res/untitled","res/tree.png");
+	//Mesh* mesh = Loader::loadObject("res/tree", "res/tree.png");
 	
-	Entity* entity = new Entity(mesh, { {0.0f}, {0.0f} ,{0.0f} }, { {0.0f}, {0.0f} ,{0.0f} }, 1.0f);
+	//Entity* entity = new Entity(mesh, { {0.0f}, {0.0f} ,{0.0f} }, { {0.0f}, {0.0f} ,{0.0f} }, 1.0f);
 
 	Ltrees* ltree = new Ltrees();
 	;
@@ -54,7 +55,7 @@ int main(void)
 	renderer.processTerrains(terrain2);*/
 	terrains.push_back(terrain);
 	terrains.push_back(terrain2);
-	entities.push_back(entity);
+	//entities.push_back(entity);
 	entities = ltree->returnEntity();
 	//entities.push_back(entity2);
 	renderer.renderScene(entities, light, terrains, camera);
@@ -70,7 +71,7 @@ int main(void)
 		// input
 		//renderer.renderScene(entities, light, terrains, camera);
 			processInput(display.returnwindow());
-			entity->changeRotation({ {0.0f},{0.001f},{0.0f} });
+			//entity->changeRotation({ {0.0f},{0.001f},{0.0f} });
 			//Display loop
 			display.clear(0.52f, 0.81f, 0.95f, 1.0f);
 			renderer.render(light, camera);
@@ -114,7 +115,8 @@ void processInput(GLFWwindow* window)
 		camera->printLocation();
 }
 
-// glfw: whenever the window size changed (by OS or user resize) this callback function executes
+// glfw: whenever the window 
+//changed (by OS or user resize) this callback function executes
 // ---------------------------------------------------------------------------------------------
 void framebuffer_size_callback(GLFWwindow* window, int width, int height)
 {
