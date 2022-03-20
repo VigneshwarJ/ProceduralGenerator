@@ -69,7 +69,12 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <EnableClangTidyCodeAnalysis>true</EnableClangTidyCodeAnalysis>
+  </PropertyGroup>
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
+    <EnableClangTidyCodeAnalysis>true</EnableClangTidyCodeAnalysis>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -139,47 +144,77 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClCompile Include="src\Ltrees.cpp" />
-    <ClCompile Include="src\HeightGenerator.cpp" />
-    <ClCompile Include="src\EntityRenderer.cpp" />
-    <ClCompile Include="src\Light.cpp" />
-    <ClCompile Include="src\Entity.cpp" />
+    <ClCompile Include="src\Sandbox.cpp" />
+    <ClCompile Include="src\Procedural\HeightGenerator.cpp" />
     <ClCompile Include="src\Camera.cpp" />
-    <ClCompile Include="src\IndexBuffer.cpp" />
-    <ClCompile Include="src\Loader.cpp" />
-    <ClCompile Include="src\Renderer.cpp" />
-    <ClCompile Include="src\Mesh.cpp" />
-    <ClCompile Include="src\Shader.cpp" />
-    <ClCompile Include="src\Display.cpp" />
-    <ClCompile Include="src\Source.cpp" />
-    <ClCompile Include="src\Vender\stb_image\stb_image.cpp" />
-    <ClCompile Include="src\VertexBuffer.cpp" />
-    <ClCompile Include="src\VertexArray.cpp" />
-    <ClCompile Include="src\Texture.cpp" />
-    <ClCompile Include="src\Terrain.cpp" />
-    <ClCompile Include="src\TerrainRenderer.cpp" />
+    <ClCompile Include="src\Procedural\Ltrees.cpp" />
+    <ClCompile Include="src\WindowingSystem\ContextHandler.cpp" />
+    <ClCompile Include="src\WindowingSystem\OpenGLWindow.cpp" />
+    <ClCompile Include="src\Renderer\IBufferObject.cpp" />
+    <ClCompile Include="src\Renderer\IRenderableHandler.cpp" />
+    <ClCompile Include="src\Renderer\ISceneSettings.cpp" />
+    <ClCompile Include="src\Renderer\IShaderHandler.cpp" />
+    <ClCompile Include="src\Renderer\ITextureHandler.cpp" />
+    <ClCompile Include="src\Renderer\opengl\BufferObjectOpenGL.cpp" />
+    <ClCompile Include="src\Renderer\opengl\RenderableHandlerOpenGL.cpp" />
+    <ClCompile Include="src\Renderer\opengl\RenderDelegateOpenGL.cpp" />
+    <ClCompile Include="src\Renderer\opengl\RendererOpenGL.cpp" />
+    <ClCompile Include="src\Renderer\opengl\SceneSettingsOpenGL.cpp" />
+    <ClCompile Include="src\Renderer\opengl\ShaderHandlerOpenGL.cpp" />
+    <ClCompile Include="src\Renderer\opengl\TextureHandlerOpenGL.cpp" />
+    <ClCompile Include="src\Scenegraph\geometry\PolygonalGeometry.cpp" />
+    <ClCompile Include="src\Scenegraph\geometry\Renderable.cpp" />
+    <ClCompile Include="src\Scenegraph\material\DiffuseMaterial.cpp" />
+    <ClCompile Include="src\Scenegraph\material\IMaterial.cpp" />
+    <ClCompile Include="src\Scenegraph\material\IShaderMaterial.cpp" />
+    <ClCompile Include="src\Scenegraph\material\TextureMaterial.cpp" />
+    <ClCompile Include="src\Scenegraph\SceneItem.cpp" />
+    <ClCompile Include="src\Vendor\stb_image\stb_image.cpp" />
+    <ClCompile Include="src\Procedural\Terrain.cpp" />
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="src\Ltrees.h" />
-    <ClInclude Include="src\HeightGenerator.h" />
-    <ClInclude Include="src\EntityRenderer.h" />
-    <ClInclude Include="src\Light.h" />
-    <ClInclude Include="src\Entity.h" />
+    <ClInclude Include="src\Events\ApplicationEvent.h" />
+    <ClInclude Include="src\Events\Event.h" />
+    <ClInclude Include="src\Events\KeyCodes.h" />
+    <ClInclude Include="src\Events\KeyEvent.h" />
+    <ClInclude Include="src\Events\MouseCodes.h" />
+    <ClInclude Include="src\Events\MouseEvent.h" />
+    <ClInclude Include="src\Sandbox.h" />
+    <ClInclude Include="src\Procedural\HeightGenerator.h" />
     <ClInclude Include="src\Camera.h" />
-    <ClInclude Include="src\IndexBuffer.h" />
-    <ClInclude Include="src\Loader.h" />
-    <ClInclude Include="src\Renderer.h" />
-    <ClInclude Include="src\Mesh.h" />
-    <ClInclude Include="src\Shader.h" />
-    <ClInclude Include="src\Display.h" />
-    <ClInclude Include="src\Source.h" />
-    <ClInclude Include="src\Vender\stb_image\stb_image.h" />
-    <ClInclude Include="src\Vertex.h" />
-    <ClInclude Include="src\VertexBuffer.h" />
-    <ClInclude Include="src\VertexArray.h" />
-    <ClInclude Include="src\Texture.h" />
-    <ClInclude Include="src\Terrain.h" />
-    <ClInclude Include="src\TerrainRenderer.h" />
+    <ClInclude Include="src\Procedural\Ltrees.h" />
+    <ClInclude Include="src\WindowingSystem\ContextHandler.h" />
+    <ClInclude Include="src\WindowingSystem\OpenGLWindow.h" />
+    <ClInclude Include="src\Renderer\IBufferObject.h" />
+    <ClInclude Include="src\Renderer\IRenderableHandler.h" />
+    <ClInclude Include="src\Renderer\ISceneSettings.h" />
+    <ClInclude Include="src\Renderer\IShaderHandler.h" />
+    <ClInclude Include="src\Renderer\ITextureHandler.h" />
+    <ClInclude Include="src\Renderer\opengl\BufferObjectOpenGL.h" />
+    <ClInclude Include="src\Renderer\opengl\RenderableHandlerOpenGL.h" />
+    <ClInclude Include="src\Renderer\opengl\RenderDelegateOpenGL.h" />
+    <ClInclude Include="src\Renderer\opengl\RendererOpenGL.h" />
+    <ClInclude Include="src\Renderer\opengl\SceneSettingsOpenGL.h" />
+    <ClInclude Include="src\Renderer\opengl\ShaderHandlerOpenGL.h" />
+    <ClInclude Include="src\Renderer\opengl\TextureHandlerOpenGL.h" />
+    <ClInclude Include="src\Scenegraph\geometry\PolygonalGeometry.h" />
+    <ClInclude Include="src\Scenegraph\geometry\Renderable.h" />
+    <ClInclude Include="src\Scenegraph\material\DiffuseMaterial.h" />
+    <ClInclude Include="src\Scenegraph\material\IMaterial.h" />
+    <ClInclude Include="src\Scenegraph\material\IShaderMaterial.h" />
+    <ClInclude Include="src\Scenegraph\material\TextureMaterial.h" />
+    <ClInclude Include="src\Scenegraph\SceneItem.h" />
+    <ClInclude Include="src\Scenegraph\StaticShaderCode.h" />
+    <ClInclude Include="src\Scenegraph\Vertex.h" />
+    <ClInclude Include="src\Utilities\SmartTypePtr.h" />
+    <ClInclude Include="src\Vendor\stb_image\stb_image.h" />
+    <ClInclude Include="src\Procedural\Terrain.h" />
+  </ItemGroup>
+  <ItemGroup>
+    <Image Include="res\grass.png" />
+    <Image Include="res\grassTexture.png" />
+    <Image Include="res\ground.png" />
+    <Image Include="res\leaf.png" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

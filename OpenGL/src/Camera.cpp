@@ -1,15 +1,16 @@
 #include "Camera.h"
 #include <iostream>
-
-Camera::Camera(glm::vec3 position ,
-	glm::vec3 up, float yaw ,
-	float pitch )
+using namespace test;
+Camera::Camera(glm::vec3 position,
+	glm::vec3 up, float yaw,
+	float pitch)
 {
 	Position = position;
 	WorldUp = up;
 	Yaw = yaw;
 	Pitch = pitch;
 	MovementSpeed = 5.0f;
+	MouseSensitivity = SENSITIVITY;
 	updateCameraVectors();
 
 }
@@ -23,10 +24,10 @@ void Camera::move()
 }
 glm::mat4 Camera::GetViewMatrix()
 {
-	glm::mat4 Camera = glm::rotate(glm::mat4(1.0f), glm::radians(Pitch), glm::vec3(1, 0, 0));
-	Camera = glm::rotate(Camera, glm::radians(Yaw), glm::vec3(0, 1, 0));
-	Camera = glm::translate(Camera, Position);
-	return Camera;
+	glm::mat4 cam = glm::rotate(glm::mat4(1.0f), glm::radians(Pitch), glm::vec3(1, 0, 0));
+	cam = glm::rotate(cam, glm::radians(Yaw), glm::vec3(0, 1, 0));
+	cam = glm::translate(cam, Position);
+	return cam;
 }
 
 // processes input received from any keyboard-like input system. Accepts input parameter in the form of camera defined ENUM (to abstract it from windowing systems)
@@ -34,7 +35,7 @@ void Camera::ProcessKeyboard(Camera_Movement direction, float deltaTime)
 {
 	float velocity = MovementSpeed * deltaTime;
 	if (direction == FORWARD)
-		Position[2] +=velocity ;
+		Position[2] += velocity;
 	if (direction == BACKWARD)
 		Position[2] -= velocity;
 	if (direction == LEFT)
@@ -43,8 +44,8 @@ void Camera::ProcessKeyboard(Camera_Movement direction, float deltaTime)
 		Position[0] -= velocity;
 	if (direction == UP)
 		Position[1] += velocity;
-	if(direction==DOWN)
-		Position[1] -= 0.1;
+	if (direction == DOWN)
+		Position[1] -= 0.1f;
 	if (direction == RUP)
 		Pitch += PITCH * deltaTime;
 	if (direction == RDOWN)
@@ -58,6 +59,7 @@ void Camera::ProcessKeyboard(Camera_Movement direction, float deltaTime)
 // processes input received from a mouse input system. Expects the offset value in both the x and y direction.
 void Camera::ProcessMouseMovement(float xoffset, float yoffset, GLboolean constrainPitch)
 {
+
 	xoffset *= MouseSensitivity;
 	yoffset *= MouseSensitivity;
 
